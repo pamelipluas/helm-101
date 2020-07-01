@@ -8,7 +8,7 @@ Get the latest list of chart
 ```bash
 helm repo update
 ```
-Install a chart 
+Install a chart
 ```bash
 helm install ./postgresql --namespace demo
 ```
@@ -49,8 +49,7 @@ Render your templates, then return the resulting manifest file
 ```bash
 helm install --dry-run --debug plinking-anaco ./mychart
 ```
-Download a uncompressed chart 
+Download a uncompressed chart
 ```bash
 helm fetch stable/postgresql --untar
 ```
-

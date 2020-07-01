@@ -1,0 +1,8 @@
+favorite:
+  drink: coffee
+  food: chicken
+  pizzaToppings:
+    - cheese
+    - mushrooms
+    - peppers
+    - onions
