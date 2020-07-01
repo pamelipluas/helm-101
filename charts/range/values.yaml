@@ -1,0 +1,11 @@
+favorite:
+  drink: coffee
+  food: pizza
+pizzaToppings:
+  - mushrooms
+  - cheese
+  - peppers
+  - onions
+
+
+    #https://v3.helm.sh/docs/chart_template_guide/control_structures/
