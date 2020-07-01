@@ -1,0 +1,54 @@
+{{- range $i, $brand := .Values.brands }}
+  {{- $dict := (dict "Values" $.Values "brand" $brand) }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "application.name" $dict }}
+  labels:
+    app: {{ include "application.name" $dict }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "application.name" $dict }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "application.name" $dict }}
+    spec:
+      serviceAccountName: {{ $.Values.serviceAccount.name }}
+      containers:
+        - name: {{ include "application.name" $dict }}
+          image: {{ include "application.image" $dict }}
+          imagePullPolicy: {{ $.Values.app.imagePullPolicy }}
+          env:
+            - name: APPLICATION_NAME
+              value: {{ include "application.name" $dict | quote }}
+            - name: LOG_LEVEL
+              value: {{ $.Values.app.logLevel | quote }}
+            - name: SOURCE_TOPIC
+              value: {{ include "kafka.sourceTopic" $dict }}
+            - name: CONSUMER_GROUP
+              value: {{ include "kafka.consumerGroup" $dict }}
+            - name: ERROR_TOPIC
+              value: {{ include "kafka.errorTopic" $dict }}
+            - name: TARGET_S3_BUCKET
+              value: {{ $.Values.s3.bucket | quote }}
+            - name: SINK_FILE_PATH
+              value: {{ include "s3Path" $dict }}
+            - name: SINK_FILE_PREFIX
+              value: {{ $.Values.s3.prefix | quote }}
+            - name: BATCH_SIZE
+              value: {{ $.Values.app.batchSize | quote }}
+            - name: BRAND
+              value: {{ $brand.name | quote }}
+          {{ if hasKey $.Values.app.resources "unlimited" | not -}}
+          resources:
+            requests:
+              cpu: {{ $.Values.app.resources.requests.cpu }}
+              memory: {{ $.Values.app.resources.requests.memory }}
+            limits:
+              memory: {{ $.Values.app.resources.limits.memory }}
+          {{ end -}}
+{{- end }}

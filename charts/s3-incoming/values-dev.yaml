@@ -1,0 +1,7 @@
+s3:
+  bucket: "customer-development"
+
+brands:
+  - name: apple
+  - name: grape
+  - name: orange

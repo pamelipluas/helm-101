@@ -1,0 +1,14 @@
+app:
+  namePrefix: "sales"
+  imageName: "customer/incoming-sales"
+  imageTag: "latest"
+  batchSize: 100000
+  resources:
+    requests:
+      cpu: "1"
+      memory: "1Gi"
+    limits:
+      memory: "8Gi"
+
+s3:
+  prefix: "sales_book"

@@ -1,0 +1,16 @@
+app:
+  namePrefix: "marketing"
+  imageName: "customer/incoming-marketing"
+  imageTag: "latest"
+  batchSize: 40000
+  gzip: false
+  resources:
+    requests:
+      cpu: "1"
+      memory: "1Gi"
+    limits:
+      memory: "3Gi"
+
+s3:
+  path: "${banner}/incoming/marketing/"
+  prefix: "marketing_service"

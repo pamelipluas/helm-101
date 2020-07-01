@@ -1,0 +1,36 @@
+app:
+  namePrefix: INVALID_NAME_PREFIX
+  imageRepository: "280660099977.dkr.ecr.us-east-1.amazonaws.com"
+  imageName: INVALID_IMAGE_NAME
+  imageTag: INVALID_IMAGE_TAG
+  imagePullPolicy: "IfNotPresent"
+  logLevel: "INFO"
+  batchSize: INVALID_BATCH_SIZE
+  gzip: true
+  resources:
+    requests:
+      cpu: "2"
+      memory: "3Gi"
+    limits:
+      memory: "3Gi"
+
+s3:
+  bucket: INVALID_BUCKET
+  path: "${brand}/incoming/${name}/"
+  prefix: "${name}"
+
+kafka:
+  bootstrapServers: INVALID_BOOTSTRAP_SERVERS
+  schemaRegistry: INVALID_SCHEMA_REGISTRY
+  topic:
+    source:
+      version: "v1"
+    error:
+      version: "v1"
+      partitions: 3
+      replicas: 3
+
+serviceAccount:
+  name: INVALID_SERVICE_ACCOUNT
+
+brands: []

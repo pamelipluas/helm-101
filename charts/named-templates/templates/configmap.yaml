@@ -1,0 +1,18 @@
+{{- define "named-templates.app" -}}
+app_name: {{ .Chart.Name }}
+app_version: "{{ .Chart.Version }}"
+generator: helm
+date: {{ now | htmlDate }}
+{{- end -}}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+  labels:
+{{ include "named-templates.app" . | indent 4 }}
+data:
+  myvalue: "Hello World"
+  {{- range $key, $val := .Values.favorite }}
+  {{ $key }}: {{ $val | quote }}
+  {{- end }}

@@ -1,9 +1,12 @@
 # helm-101
 This is a initial guide to learn and find resources about Helm  
 
+:star: Check the helm cheatsheet [commands](helm-commands.md) 
+
 ### Resources
 - Helm (v3) Documentation https://v3.helm.sh/docs/
 - Helm Hub https://hub.helm.sh/ 
+- Curated applications for Kubernetes https://github.com/helm/charts
 
 ### More interesting links
 - What is GitOps? https://www.weave.works/technologies/gitops/
