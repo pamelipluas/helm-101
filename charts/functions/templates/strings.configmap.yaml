@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  withPrintf: {{ printf "Hello %s" .Values.name }}
+  trimmedValue: {{ trim "  Trim Func  " }}
+  pipeline: {{ printf "Hello %s ---" .Values.name | trimSuffix "---" }}
+  lowercase: {{ lower .Values.name }}
+  uppercase: {{ lower .Values.name | upper }}
+  truncate: {{ .Values.longText | trunc 20 }}
+  quotedText: {{ .Values.name | quote }}
+  singleQuotedText: {{ .Values.name | squote }}
+  token: {{ randAlphaNum 20 }}
+  strongToken: {{ printf "%s_^*-($#@!%s" (randNumeric 8) (randAlphaNum 12) }}
+  concatenate: {{ cat "Hello" .Values.name }}
+  resources:
+    {{- .Values.resources | toYaml | nindent 4 -}}
+  config.properties: |
+  {{ printf "db.host=%s" .Values.host | indent 4 }}
+  {{ printf "db.user=%s" .Values.user | indent 4 }}
+  {{ printf "db.password=%s" .Values.password | indent 4 }}
