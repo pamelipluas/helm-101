@@ -5,6 +5,7 @@ This is a initial guide to learn and find resources about Helm
 
 ### Resources
 - Helm (v3) Documentation https://v3.helm.sh/docs/
+- Helm : Chart Template Guide https://v3.helm.sh/docs/chart_template_guide/getting_started/
 - Helm Hub https://hub.helm.sh/ 
 - Curated applications for Kubernetes https://github.com/helm/charts
 
