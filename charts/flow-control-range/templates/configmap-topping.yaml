@@ -1,9 +1,12 @@
+{{- range $topping := .Values.pizzaToppings }}
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: configmap-cheese
+  name: configmap-{{ $topping }}
 data:
   myvalue: "Hello!"
   drink: soda
   food: pizza 
-  topping: 'cheese'
+  topping: {{ $topping }}
+{{- end }}

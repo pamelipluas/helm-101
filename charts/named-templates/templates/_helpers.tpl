@@ -1,3 +1,10 @@
+{{- define "named-templates.app" -}}
+app_name: {{ .Chart.Name }}
+app_version: "{{ .Chart.Version }}"
+generator: helm
+date: {{ now | htmlDate }}
+{{- end -}}
+
 {{/* vim: set filetype=mustache: */}}
 {{/*
 Expand the name of the chart.

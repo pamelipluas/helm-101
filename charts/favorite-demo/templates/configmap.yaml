@@ -4,4 +4,5 @@ metadata:
   name: {{ .Release.Name }}-configmap
 data:
   myvalue: "Hello World"
-  drink: 'coffee'
+  drink: {{ .Values.favoriteDrink }}
+  food: {{ .Values.favoriteFood }}
